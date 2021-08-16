@@ -1,0 +1,2310 @@
+<!DOCTYPE html>
+<html lang="es">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Instituto de la  Iluminacion</title>
+
+    <meta name="keywords" content="">
+
+    <link href='../../fonts.googleapis.com/css6beb.css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../../maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<script src="../../ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.red.css" rel="stylesheet" id="theme-stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+	<link rel="shortcut icon" href="../img/iabi_logo.png" type="image/x-icon" />
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/owl.theme.css" rel="stylesheet">
+	<link href="css/ion.rangeSlider.css" rel="stylesheet">
+    <link href="css/ion.rangeSlider.skinNice.css" rel="stylesheet">
+	<script src="js/ion.rangeSlider.min.js"></script>
+	<link href="css/normalize.css" rel="stylesheet">
+	<style>
+	
+	.count{
+		background: #dc3545!important;
+		border-radius: 50%;
+		color: #fff;
+		font-family: 'Open Sans';
+		font-size: 9px;
+		font-weight: 700;
+		float: right;
+		height: 20px;
+		width: 20px;
+		line-height: 20px;
+		margin-right: 15px;
+		text-align: center; 
+	}
+	
+	
+	#centrojx {
+	   width: 250px;
+	   height: 229px;
+	   position: absolute;
+	   top: 50%;
+	   left: 50%;
+	   margin-top: -125px;
+	   margin-left: -125px;
+	}
+
+	.dropdown-submenu {
+		position: relative;
+	}
+
+	.dropdown-submenu .dropdown-menu {
+		top: 0;
+		left: 100%;
+		margin-top: -1px;
+	}
+	
+	body {
+		overflow: hidden;
+	}
+
+	#preloader {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #fff;
+		/* change if the mask should have another color then white */
+		z-index: 9999; /* makes sure it stays on top */
+	}
+
+	#status {
+		width: 200px;
+		height: 200px;
+		position: absolute;
+		left: 50%;
+		/* centers the loading animation horizontally one the screen */
+		top: 50%; /* centers the loading animation vertically one the screen */
+		background-image: url(img/gears.gif);
+		/* path to your loading animation */
+		background-repeat: no-repeat;
+		background-position: center;
+		margin: -100px 0 0 -100px; /* is width and height divided by two */
+	}
+	
+	
+</style>
+	
+	<script>
+	
+	function forma_pago_ayuda(){
+		jQuery(function(){
+			swal({
+				title: "Facturación",
+				text: "Para realizar su factura, es necesario que ingresa la forma de pago que aparecerá en su factura",
+				icon: "info"
+			})
+		});
+	}
+	
+	function muestra_ayuda_sistema(){
+		
+		var mensaje = "<b>Factura:</b> Le proporcionaremos un sistema para que llene su factura, nosotros nos encargamos de generar su PDF, su XML y mandarlo a su cliente. <br><br>";
+			mensaje = mensaje + "<b>Timbrado:</b> Usted nos manda su XML sellado, nosotros lo enviamos al SAT, le ponemos el timbre fiscal y se lo regresamos ya timbrado";
+		
+		jQuery(function(){
+			swal({
+				html:true,
+				title: 	"Tipos de servicio",
+				text: 	mensaje,
+				icon: 	"info"
+			})
+		});
+	}
+	
+	function loading(){
+		jQuery(function(){
+			swal({
+				title: "Por favor espere...",
+				text: "Se está realizando su búsqueda",
+				imageUrl: "https://iabi.com.mx/tienda/img/gears.gif"
+			})
+		});
+	}
+	
+	function loading_text(texto){
+		jQuery(function(){
+			swal({
+				title: "Por favor espere...",
+				text: texto,
+				imageUrl: "https://iabi.com.mx/tienda/img/gears.gif"
+			})
+		});
+	}
+	
+	function loading_contacto(){
+		jQuery(function(){
+			swal({
+				title: "Por favor espere...",
+				text: "Se está enviando su correo",
+				imageUrl: "https://iabi.com.mx/tienda/img/gears.gif"
+			})
+		});
+	}
+	
+	function close_loading(){
+		
+		jQuery(function(){
+			swal.close()
+		});
+		
+	}
+	
+	function validateEmail(email) {
+		var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+		return emailReg.test(email);
+	}
+	
+	function valida_contacto(){
+		
+		var nombres	= $("#nombres").val();
+		var apellidos	= $("#apellidos").val();
+		var email	= $("#email").val();
+		var telefono	= $("#telefono").val();
+		var asunto	= $("#asunto").val();
+		var mensaje	= $("#mensaje").val();
+		
+		var errores = 0;
+		var nom_error = "";
+		
+		if(nombres.length == 0 || /^\s+$/.test(nombres)){
+			 $("#nombres_group").addClass("has-error");
+			 errores = errores +1;
+			 nom_error+="Nombres, ";
+		}else{
+			$("#nombres_group").removeClass("has-error");
+		}
+		
+		if(apellidos.length == 0 || /^\s+$/.test(apellidos)){
+			 $("#apellidos_group").addClass("has-error");
+			 errores = errores +1;
+			 nom_error+="Apellidos, ";
+		}else{
+			$("#apellidos_group").removeClass("has-error");
+		}
+		
+		if(email.length == 0 || /^\s+$/.test(email)){
+			 $("#email_group").addClass("has-error");
+			 errores = errores +1;
+			 nom_error+="Correo, ";
+		}else{
+			
+			if(!validateEmail(email)){
+				 $("#email_group").addClass("has-error");
+				 errores = errores +1;
+				 nom_error+="Correo, ";
+			}else{
+				$("#email_group").removeClass("has-error");
+			}
+			
+		}
+		
+		if(telefono.length == 0 || /^\s+$/.test(telefono)){
+			 $("#telefono_group").addClass("has-error");
+			 errores = errores +1;
+			 nom_error+="Telefono, ";
+		}else{
+			
+			var valid = '[0-9]{10,15}';
+			var nuevo_valida=new RegExp(valid);
+			var matchArray=telefono.match(nuevo_valida);
+			
+			if (matchArray==null) {
+				$("#telefono_group").addClass("has-error");
+				errores = errores +1;
+				nom_error+="Telefono, ";
+			}else{
+				$("#telefono_group").removeClass("has-error");
+			}
+			
+		}
+		
+		if(asunto.length == 0 || /^\s+$/.test(asunto)){
+			 $("#asunto_group").addClass("has-error");
+			 errores = errores +1;
+			 nom_error+="Asunto, ";
+		}else{
+			$("#asunto_group").removeClass("has-error");
+		}
+		
+		if(mensaje.length == 0 || /^\s+$/.test(mensaje)){
+			 $("#mensaje_group").addClass("has-error");
+			 errores = errores +1;
+			 nom_error+="Mensaje, ";
+		}else{
+			$("#mensaje_group").removeClass("has-error");
+		}
+		
+		if(errores>0){
+			nom_error2 = nom_error.substring(0,nom_error.length-2);
+			jQuery(function(){swal("ERROR", "Tiene "+ errores +" errores. Favor de revisar los siguientes Campos: " + nom_error2, "error");});
+			return false;
+		}else{
+			return true;
+		}
+		
+	}
+	
+	function valida_inicia_sesion(){
+		
+		var usuario2	= $("#usuario2").val();
+		var pass2	= $("#pass2").val();
+		var errores = 0;
+		var nom_error = "";
+		
+		if(usuario2.length == 0 || /^\s+$/.test(usuario2)){
+			 $("#group_usuario").addClass("has-error");
+			 errores = errores +1;
+			 nom_error+="Usuario, ";
+		}else{
+			$("#group_usuario").removeClass("has-error");
+		}
+		
+		if(pass2.length == 0 || /^\s+$/.test(pass2)){
+			 $("#group_pass").addClass("has-error");
+			 errores = errores +1;
+			 nom_error+="Contraseña, ";
+		}else{
+			$("#group_pass").removeClass("has-error");
+		}
+		
+		if(errores>0){
+			nom_error2 = nom_error.substring(0,nom_error.length-2);
+			jQuery(function(){swal("ERROR", "Tiene "+ errores +" errores. Favor de revisar los siguientes Campos: " + nom_error2, "error");});
+			return false;
+		}else{
+			return true;
+		}
+		
+		
+	}
+	
+	function valida_registro_user(){
+		
+		var rfc	= $("#rfc").val();
+		var razon_social	= $("#razon_social").val();
+		var regimen_fiscal	= $("#regimen_fiscal option:selected").val();
+		var nombre_comercial	= $("#nombre_comercial").val();
+		var sistema	= $("#sistema3 option:selected").val();
+		var calle	= $("#calle").val();
+		var num_ext	= $("#num_ext").val();
+		var num_int	= $("#num_int").val();
+		var colonia	= $("#colonia").val();
+		var cp	= $("#cp").val();
+		var municipio	= $("#municipio").val();
+		var estado	= $("#estado").val();
+		var pais	= $("#pais").val();
+		var nombres	= $("#nombres").val();
+		var apellido_p	= $("#apellido_p").val();
+		var apellido_m	= $("#apellido_m").val();
+		var direccion	= $("#direccion").val();
+		var telefono	= $("#telefono").val();
+		var correo	= $("#correo").val();
+		var errores_empresa = 0;
+		var errores_direccion = 0;
+		var errores_contacto = 0;
+		var nom_error_empresa = "";
+		var nom_error_direccion = "";
+		var nom_error_contacto = "";
+		var error = 0;
+		/*empresa*/
+		
+		if (rfc.length == 12){
+			var valid = '^(([A-Z]|[a-z]){3})([0-9]{6})((([A-Z]|[a-z]|[0-9]){3}))';
+		}else{
+			var valid = '^(([A-Z]|[a-z]|\s){1})(([A-Z]|[a-z]){3})([0-9]{6})((([A-Z]|[a-z]|[0-9]){3}))';
+		}
+		var nuevo_valida=new RegExp(valid);
+		var matchArray=rfc.match(nuevo_valida);
+		
+		if (matchArray==null) {
+			 $("#rfc_help").show();
+			 $("#group_rfc").addClass("has-error");
+			 errores_empresa = errores_empresa +1;
+			 nom_error_empresa+="RFC, ";
+			 
+		}else{
+			$("#group_rfc").removeClass("has-error");
+			$("#rfc_help").hide();
+		}
+		
+		if(razon_social.length == 0 || /^\s+$/.test(razon_social)){
+			 $("#group_razon_social").addClass("has-error");
+			 errores_empresa = errores_empresa +1;
+			 nom_error_empresa+="Razon Social, ";
+			 $("#razon_social_help").show();
+		}else{
+			$("#group_razon_social").removeClass("has-error");
+			$("#razon_social_help").hide();
+		}
+		if(regimen_fiscal == ""){
+			 $("#group_regimen_fiscal").addClass("has-error");
+			 errores_empresa = errores_empresa +1;
+			 nom_error_empresa+="Régimen Fiscal, ";
+			 $("#regimen_fiscal_help").show();
+		}else{
+			$("#group_regimen_fiscal").removeClass("has-error");
+			$("#regimen_fiscal_help").hide();
+		}
+		if(nombre_comercial.length == 0 || /^\s+$/.test(nombre_comercial)){
+			 $("#group_nombre_comercial").addClass("has-error");
+			 errores_empresa = errores_empresa +1;
+			 nom_error_empresa+="Nombre comercial, ";
+			 $("#nombre_comercial_help").show();
+		}else{
+			$("#group_nombre_comercial").removeClass("has-error");
+			$("#nombre_comercial_help").hide();
+		}
+		
+		
+		/* Direccion */
+		
+		if(calle.length == 0 || /^\s+$/.test(calle)){
+			 $("#group_calle").addClass("has-error");
+			 errores_direccion = errores_direccion +1;
+			 nom_error_direccion+="Calle, ";
+			 $("#calle_help").show();
+		}else{
+			$("#group_calle").removeClass("has-error");
+			$("#calle_help").hide();
+		}
+		if(num_ext.length == 0 || /^\s+$/.test(num_ext)){
+			 $("#group_num_ext").addClass("has-error");
+			 errores_direccion = errores_direccion +1;
+			 nom_error_direccion+="Numero Exterior, ";
+			 $("#nun_ext_help").show();
+		}else{
+			$("#group_num_ext").removeClass("has-error");
+			$("#nun_ext_help").hide();
+		}
+
+		if(colonia.length == 0 || /^\s+$/.test(colonia)){
+			 $("#group_colonia").addClass("has-error");
+			 errores_direccion = errores_direccion +1;
+			 nom_error_direccion+="Colonia, ";
+			 $("#colonia_help").show();
+		}else{
+			$("#group_colonia").removeClass("has-error");
+			$("#colonia_help").hide();
+		}
+		if(cp.length == 0 || /^\s+$/.test(cp)){
+			 $("#group_cp").addClass("has-error");
+			 errores_direccion = errores_direccion +1;
+			 nom_error_direccion+="Codigo Postal, ";
+			 $("#cp_help").show();
+		}else{
+			
+			var valid = '[0-9]{5}';
+			var nuevo_valida=new RegExp(valid);
+			var matchArray=cp.match(nuevo_valida);
+			
+			if (matchArray==null) {
+				$("#group_cp").addClass("has-error");
+				errores_direccion = errores_direccion +1;
+				nom_error_direccion+="Codigo Postal, ";
+				$("#cp_help").show();
+			}else{
+				$("#group_cp").removeClass("has-error");
+				$("#cp_help").hide();
+			}
+		}
+		if(municipio.length == 0 || /^\s+$/.test(municipio)){
+			 $("#group_municipio").addClass("has-error");
+			 errores_direccion = errores_direccion +1;
+			 nom_error_direccion+="Municipio, ";
+			 $("#municipio_help").show();
+		}else{
+			$("#group_municipio").removeClass("has-error");
+			$("#municipio_help").hide();
+		}
+		if(estado.length == 0 || /^\s+$/.test(estado)){
+			 $("#group_estado").addClass("has-error");
+			 errores_direccion = errores_direccion +1;
+			 nom_error_direccion+="Estado, ";
+			 $("#estado_help").show();
+		}else{
+			$("#group_estado").removeClass("has-error");
+			$("#estado_help").hide();
+		}
+		if(pais.length == 0 || /^\s+$/.test(pais)){
+			 $("#group_pais").addClass("has-error");
+			 errores_direccion = errores_direccion +1;
+			 nom_error_direccion+="Pais, ";
+			 $("#pais_help").show();
+		}else{
+			$("#group_pais").removeClass("has-error");
+			$("#pais_help").hide();
+		}
+		
+		/*contactos*/
+		
+		if(nombres.length == 0 || /^\s+$/.test(nombres)){
+			 $("#group_nombres").addClass("has-error");
+			 errores_contacto = errores_contacto +1;
+			 nom_error_contacto+="Nombres, ";
+			 $("#nombres_help").show();
+		}else{
+			$("#group_nombres").removeClass("has-error");
+			$("#nombres_help").hide();
+		}
+		if(apellido_p.length == 0 || /^\s+$/.test(apellido_p)){
+			 $("#group_apellido_p").addClass("has-error");
+			 errores_contacto = errores_contacto +1;
+			 nom_error_contacto+="Apellido Paterno, ";
+			 $("#apellido_p_help").show();
+		}else{
+			$("#group_apellido_p").removeClass("has-error");
+			$("#apellido_p_help").hide();
+		}
+		if(apellido_m.length == 0 || /^\s+$/.test(apellido_m)){
+			 $("#group_apellido_m").addClass("has-error");
+			 errores_contacto = errores_contacto +1;
+			 nom_error_contacto+="Apellido Materno, ";
+			 $("#apellido_m_help").show();
+		}else{
+			$("#group_apellido_m").removeClass("has-error");
+			$("#apellido_m_help").hide();
+		}
+		if(direccion.length == 0 || /^\s+$/.test(direccion)){
+			 $("#group_direccion").addClass("has-error");
+			 errores_contacto = errores_contacto +1;
+			 nom_error_contacto+="Direccion, ";
+			 $("#direccion_help").show();
+		}else{
+			$("#group_direccion").removeClass("has-error");
+			$("#direccion_help").hide();
+		}
+		if(telefono.length == 0 || /^\s+$/.test(telefono)){
+			 $("#group_telefono").addClass("has-error");
+			 errores_contacto = errores_contacto +1;
+			 nom_error_contacto+="Telefono, ";
+			 $("#telefono_help").show();
+		}else{
+			
+			var valid = '[0-9]{10}';
+			var nuevo_valida=new RegExp(valid);
+			var matchArray=telefono.match(nuevo_valida);
+			
+			if (matchArray==null) {
+				$("#group_telefono").addClass("has-error");
+				errores_contacto = errores_contacto +1;
+				nom_error_contacto+="Telefono, ";
+				$("#telefono_help").show();
+			}else{
+				$("#group_telefono").removeClass("has-error");
+				$("#telefono_help").hide();
+			}
+		}
+		if(correo.length == 0 || /^\s+$/.test(correo)){
+			 $("#group_correo").addClass("has-error");
+			 errores_contacto = errores_contacto +1;
+			 nom_error_contacto+="Correo, ";
+			 $("#correo_help").show();
+		}else{
+			
+			var emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+			
+			if(!emailRegex.test(correo)){
+				$("#group_correo").addClass("has-error");
+				errores_contacto = errores_contacto +1;
+				nom_error_contacto+="Correo, ";
+				$("#correo_help").show();
+			}else{
+				$("#group_correo").removeClass("has-error");
+				$("#correo_help").hide();
+			}
+			
+			
+		}
+
+		
+		if(errores_empresa>0){
+			
+			nom_error_empresa = nom_error_empresa.substring(0,nom_error_empresa.length-2);
+			var nom_error_empresa_2 = "Tiene "+ errores_empresa +" errores en empresa: " + nom_error_empresa + "\n\n";
+			error = error + 1;
+			
+		}else{
+			var nom_error_empresa_2="";
+		}
+		
+		if(errores_direccion>0){
+			
+			nom_error_direccion = nom_error_direccion.substring(0,nom_error_direccion.length-2);
+			var nom_error_direccion_2 = "Tiene "+ errores_direccion +" errores en dirección fiscal: " + nom_error_direccion + "\n\n";
+			error = error + 1;
+			
+		}else{
+			var nom_error_direccion_2="";
+		}
+		
+		if(errores_contacto>0){
+			
+			nom_error_contacto = nom_error_contacto.substring(0,nom_error_contacto.length-2);
+			var nom_error_contacto_2 = "Tiene "+ errores_contacto +" errores en contacto: " + nom_error_contacto;
+			error = error + 1;
+			
+		}else{
+			var nom_error_contacto_2="";
+		}
+		
+		if(error>0){
+			jQuery(function(){swal("ERROR", nom_error_empresa_2 +  nom_error_direccion_2 + nom_error_contacto_2, "error");});
+			return false;
+		}else{
+			return true;
+		}
+		
+		
+	}
+	
+	/* Validaciones individuales */
+	
+	
+	//validación empresa
+	function validate_rfc(){
+		
+		var rfc	= $("#rfc").val();
+		
+		if (rfc.length == 12){
+			var valid = '^(([A-Z]|[a-z]){3})([0-9]{6})((([A-Z]|[a-z]|[0-9]){3}))';
+		}else{
+			var valid = '^(([A-Z]|[a-z]|\s){1})(([A-Z]|[a-z]){3})([0-9]{6})((([A-Z]|[a-z]|[0-9]){3}))';
+		}
+		var nuevo_valida=new RegExp(valid);
+		var matchArray=rfc.match(nuevo_valida);
+		
+		if (matchArray==null) {
+			 $("#rfc_help").show();
+			 $("#group_rfc").addClass("has-error");
+		}else{
+			$("#group_rfc").removeClass("has-error");
+			$("#rfc_help").hide();
+		}
+	}
+	
+	function validate_razon_social(){
+		
+		var razon_social = $("#razon_social").val();
+		
+		if(razon_social.length == 0 || /^\s+$/.test(razon_social)){
+			$("#razon_social_help").show();
+			$("#group_razon_social").addClass("has-error");
+		}else{
+			$("#group_razon_social").removeClass("has-error");
+			$("#razon_social_help").hide();
+		}
+		
+	}
+	
+	function validate_regimen_fiscal(){
+		
+		var regimen_fiscal	= $("#regimen_fiscal option:selected").val();
+		
+		if(regimen_fiscal == ""){
+			$("#regimen_fiscal_help").show();
+			$("#group_regimen_fiscal").addClass("has-error");
+		}else{
+			$("#group_regimen_fiscal").removeClass("has-error");
+			$("#regimen_fiscal_help").hide();
+		}
+		
+	}
+	
+	function validate_nombre_comercial(){
+		
+		var nombre_comercial	= $("#nombre_comercial").val();
+		
+		if(nombre_comercial.length == 0 || /^\s+$/.test(nombre_comercial)){
+			$("#nombre_comercial_help").show();
+			$("#group_nombre_comercial").addClass("has-error");
+		}else{
+			$("#group_nombre_comercial").removeClass("has-error");
+			$("#nombre_comercial_help").hide();
+		}
+		
+	}
+	
+	function validate_servicio(){
+		
+		var sistema	= $("#sistema3 option:selected").val();
+		
+		if(sistema == ""){
+			$("#servicio_help").show();
+			$("#group_sistema").addClass("has-error");
+		}else{
+			$("#group_sistema").removeClass("has-error");
+			$("#servicio_help").hide();
+		}
+	}
+	
+	
+	
+	
+	//validacion dirección fiscal
+	function validate_calle(){
+		
+		var calle	= $("#calle").val();
+		
+		if(calle.length == 0 || /^\s+$/.test(calle)){
+			$("#calle_help").show();
+			$("#group_calle").addClass("has-error");
+		}else{
+			$("#group_calle").removeClass("has-error");
+			$("#calle_help").hide();
+		}
+		
+	}
+	
+	function validate_num_ext(){
+		
+		var num_ext	= $("#num_ext").val();
+		
+		if(num_ext.length == 0 || /^\s+$/.test(num_ext)){
+			$("#nun_ext_help").show();
+			$("#group_num_ext").addClass("has-error");
+		}else{
+			$("#group_num_ext").removeClass("has-error");
+			$("#nun_ext_help").hide();
+		}
+	}
+	
+	function validate_colonia(){
+		
+		var colonia	= $("#colonia").val();
+		
+		if(colonia.length == 0 || /^\s+$/.test(colonia)){
+			$("#colonia_help").show();
+			$("#group_colonia").addClass("has-error");
+		}else{
+			$("#group_colonia").removeClass("has-error");
+			$("#colonia_help").hide();
+		}
+		
+	}
+	
+	function validate_cp(){
+		
+		var cp	= $("#cp").val();
+		
+		if(cp.length == 0 || /^\s+$/.test(cp)){
+			$("#group_cp").addClass("has-error");
+			$("#cp_help").show();
+		}else{
+			
+			var valid = '[0-9]{5}';
+			var nuevo_valida=new RegExp(valid);
+			var matchArray=cp.match(nuevo_valida);
+			
+			if (matchArray==null) {
+				$("#group_cp").addClass("has-error");
+				$("#cp_help").show();
+			}else{
+				$("#group_cp").removeClass("has-error");
+				$("#cp_help").hide();
+			}
+		}
+		
+	}
+	
+	function validate_municipio(){
+		
+		var municipio	= $("#municipio").val();
+		
+		if(municipio.length == 0 || /^\s+$/.test(municipio)){
+			$("#municipio_help").show();
+			$("#group_municipio").addClass("has-error");
+		}else{
+			$("#group_municipio").removeClass("has-error");
+			$("#municipio_help").hide();
+		}
+		
+	}
+	
+	function validate_estado(){
+		
+		var estado	= $("#estado").val();
+		
+		if(estado.length == 0 || /^\s+$/.test(estado)){
+			$("#estado_help").show();
+			$("#group_estado").addClass("has-error");
+		}else{
+			$("#group_estado").removeClass("has-error");
+			$("#estado_help").hide();
+		}
+		
+	}
+	
+	function validate_pais(){
+		
+		var pais	= $("#pais").val();
+		
+		if(pais.length == 0 || /^\s+$/.test(pais)){
+			$("#pais_help").show();
+			$("#group_pais").addClass("has-error");
+		}else{
+			$("#group_pais").removeClass("has-error");
+			$("#pais_help").hide();
+		}
+		
+	}
+	
+	
+	
+	
+	//validacion contacto
+	
+	function validate_nombres(){
+		
+		var nombres	= $("#nombres").val();
+		
+		if(nombres.length == 0 || /^\s+$/.test(nombres)){
+			$("#nombres_help").show();
+			$("#group_nombres").addClass("has-error");
+		}else{
+			$("#group_nombres").removeClass("has-error");
+			$("#nombres_help").hide();
+		}
+		
+	}
+	
+	function validate_apellido_p(){
+		
+		var apellido_p	= $("#apellido_p").val();
+		
+		if(apellido_p.length == 0 || /^\s+$/.test(apellido_p)){
+			$("#apellido_p_help").show();
+			$("#group_apellido_p").addClass("has-error");
+		}else{
+			$("#apellido_p_help").hide();
+			$("#group_apellido_p").removeClass("has-error");
+		}
+		
+	}	
+	
+	
+	function validate_apellido_m(){
+		
+		var apellido_m	= $("#apellido_m").val();
+		
+		if(apellido_m.length == 0 || /^\s+$/.test(apellido_m)){
+			$("#apellido_m_help").show();
+			$("#group_apellido_m").addClass("has-error");
+		}else{
+			$("#apellido_m_help").hide();
+			$("#group_apellido_m").removeClass("has-error");
+		}
+		
+	}
+	
+	function validate_direccion(){
+		
+		var direccion	= $("#direccion").val();
+		
+		if(direccion.length == 0 || /^\s+$/.test(direccion)){
+			$("#direccion_help").show();
+			$("#group_direccion").addClass("has-error");
+		}else{
+			$("#group_direccion").removeClass("has-error");
+			$("#direccion_help").hide();
+		}
+		
+	}
+	
+	function validate_telefono(){
+		
+		var telefono	= $("#telefono").val();
+		
+		if(telefono.length == 0 || /^\s+$/.test(telefono)){
+			$("#group_telefono").addClass("has-error");
+			$("#telefono_help").show();
+		}else{
+			
+			var valid = '[0-9]{10}';
+			var nuevo_valida=new RegExp(valid);
+			var matchArray=telefono.match(nuevo_valida);
+			
+			if (matchArray==null) {
+				$("#group_telefono").addClass("has-error");
+				$("#telefono_help").show();
+			}else{
+				$("#group_telefono").removeClass("has-error");
+				$("#telefono_help").hide();
+			}
+		}
+		
+	}
+	
+	function validate_correo(){
+		
+		var correo	= $("#correo").val();
+		
+		if(correo.length == 0 || /^\s+$/.test(correo)){
+			$("#group_correo").addClass("has-error");
+			$("#correo_help").show();
+		}else{
+			
+			var emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+			
+			if(!emailRegex.test(correo)){
+				$("#group_correo").addClass("has-error");
+				$("#correo_help").show();
+			}else{
+				$("#group_correo").removeClass("has-error");
+				$("#correo_help").hide();
+			}
+			
+		}
+		
+	}
+	
+	/* Termina validaciones individuales*/
+
+
+	function valida_paquete(){
+					
+		var nombre_paquete	= $("#nombre_paquete").val();
+		var	descripcion_paquete = $("#descripcion_paquete").val();
+		var	numero_facturas =  $("#numero_facturas").val();
+		var	precio_paquete = $("#precio_paquete").val();
+		var	usar_cupon = $("#usar_cupon option:selected").val();
+		var	tipo_descuento = $("#tipo_descuento option:selected").val();
+		var	cupon_descuento = $("#cupon_descuento").val();
+		var	porcentaje_descuento = $("#porcentaje_descuento").val();
+		var	categoria = $("#categoria").val();
+		
+		
+		if(nombre_paquete.length == 0 || /^\s+$/.test(nombre_paquete)){
+			jQuery(function(){swal("ERROR", "Favor de ingresar el nombre del paquete", "error");});
+			return false;
+		}
+		
+		if(descripcion_paquete.length == 0 || /^\s+$/.test(descripcion_paquete)){
+			jQuery(function(){swal("ERROR", "Favor de ingresar la descripción del paquete", "error");});
+			return false;
+		}
+		if(numero_facturas.length == 0 || /^\s+$/.test(numero_facturas)){
+			jQuery(function(){swal("ERROR", "Favor de ingresar el numero de facturas", "error");});
+			return false;
+		}
+		
+		if(isNaN(numero_facturas)){
+			jQuery(function(){swal("ERROR", "El numero de facturas no es valido", "error");});
+			return false;
+		}
+		
+		if(precio_paquete.length == 0 || /^\s+$/.test(precio_paquete)){
+			jQuery(function(){swal("ERROR", "Favor de ingresar el precio de paquete", "error");});
+			return false;
+		}
+
+		if(isNaN(precio_paquete)){
+			jQuery(function(){swal("ERROR", "El precio de paquete no es valido", "error");});
+			return false;
+		}
+		
+		if(usar_cupon==''){
+			jQuery(function(){swal("ERROR", "Favor de seleccionar si se utilizará cupón para el producto", "error");});
+			return false;
+		}
+		
+		if(categoria==''){
+			jQuery(function(){swal("ERROR", "Favor de seleccionar la categoria del producto", "error");});
+			return false;
+		}
+		
+		
+		if(usar_cupon=='1'){
+			
+			if(tipo_descuento==''){
+				jQuery(function(){swal("ERROR", "Favor de ingresar el tipo de descuento", "error");});
+				return false;
+			}	
+			if(cupon_descuento.length == 0 || /^\s+$/.test(cupon_descuento)){
+				jQuery(function(){swal("ERROR", "Favor de ingresar el código del cupon", "error");});
+				return false;
+			}		
+			if(porcentaje_descuento.length == 0 || /^\s+$/.test(porcentaje_descuento)){
+				jQuery(function(){swal("ERROR", "Favor de ingresar el porcentaje o monto de descuento", "error");});
+				return false;
+			}
+			if(isNaN(porcentaje_descuento)){
+			jQuery(function(){swal("ERROR", "El porcentaje o monto de descuento no es valido", "error");});
+			return false;
+			}
+			
+		}
+
+		return true;
+
+		
+	}
+	
+	//funcion borrar paquete
+	function borrar_paquete(id){
+		swal({
+			title: "¿Realmente desea borrar el paquete?",
+			text: "Si borra el paquete no se podrá deshacer la operación",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: '#DD6B55',
+			confirmButtonText: 'Si, borrar',
+			cancelButtonText: "No, cancelar",
+			closeOnConfirm: false,
+			closeOnCancel: false,
+			showLoaderOnConfirm: true
+		},
+		function(isConfirm) {
+			if (isConfirm) {
+				
+				$("#respuesta_ajax").html('<img src="https://iabi.com.mx/tienda/img/cargando2.gif" id="centrojx">');
+				
+				$.ajax({
+					type: 'POST',
+					dataType: "html",
+					url: 'https://iabi.com.mx/tienda/ajax/paquetes/borrar',
+					data: ('id='+id)
+				})
+				
+				.done(function(res){
+					$("#respuesta_ajax").html(res);
+				});
+				
+			}else{
+				swal("CANCELADO", "Se ha cancelado la operación", "error");
+			}
+		});
+	}
+	//termina función borrrar paquete
+	
+	
+	//funcion vaciar carrito
+	function vaciar_carrito(){
+		
+		swal({
+			title: "¿Realmente desea vaciar su carrito?",
+			text: "Se borrarán todos sus productos previamente seleccinados",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: '#DD6B55',
+			confirmButtonText: 'Si, vaciar',
+			cancelButtonText: "No, cancelar",
+			closeOnConfirm: false,
+			closeOnCancel: false,
+			showLoaderOnConfirm: true
+		},
+		function(isConfirm) {
+			if (isConfirm) {
+				
+				$("#respuesta_ajax").html('<img src="https://iabi.com.mx/tienda/img/cargando2.gif" id="centrojx">');
+				
+					$.ajax({
+						type: 'POST',
+						dataType: "html",
+						url: 'https://iabi.com.mx/tienda/ajax/canasta/vaciar'
+					})
+					
+					.done(function(res){
+						$("#respuesta_ajax").html(res);
+					});
+				
+			}else{
+				swal("CANCELADO", "Se ha cancelado la operación", "error");
+			}
+		});
+		
+	}
+	//funcion vaciar carrito
+	
+	//pagar compra incompleta
+	function pagar_compra(id,metodo_pago){
+		
+		swal({
+			title: "¿Realmente desea proceder a pagar su pedido?",
+			type: "info",
+			showCancelButton: true,
+			confirmButtonColor: '#DD6B55',
+			confirmButtonText: 'Si',
+			cancelButtonText: "No, cancelar",
+			closeOnConfirm: false,
+			closeOnCancel: false,
+			showLoaderOnConfirm: true
+		},
+		function(isConfirm) {
+			if (isConfirm) {
+				
+				$("#respuesta_ajax").html('<img src="https://iabi.com.mx/tienda/img/cargando2.gif" id="centrojx">');
+				
+					$.ajax({
+						type: 'POST',
+						dataType: "html",
+						url: 'https://iabi.com.mx/tienda/ajax/canasta/pagar_compra',
+						data: ('id_unico='+id+'&metodo_pago='+metodo_pago)
+					})
+					
+					.done(function(res){
+						$("#respuesta_ajax").html("<div style='display:none !important'>"+res+"</div>");
+						
+						if(metodo_pago=='1' || metodo_pago=='2'){
+							setTimeout(
+								function(){
+									$('#bw_pay_btn').click();
+									close_loading();
+							}, 1000);
+						}
+						
+						
+					});
+				
+			}else{
+				swal("CANCELADO", "Se ha cancelado la operación", "error");
+			}
+		});
+		
+	}
+	//pagar compra incompleta
+	
+	
+	//funcion agregar paquete al carrito
+	function agregar_paquete_carrito(id,comprar_ahora=0){
+		
+		var stock_id = $("#stock_id option:selected").val();
+		
+		if(stock_id!=''){
+			
+						$.ajax({
+				type: 'POST',
+				dataType: "html",
+				url: 'https://iabi.com.mx/tienda/ajax/canasta/agregar',
+				data: ('id='+id+'&comprar_ahora='+comprar_ahora+'&id_stock='+stock_id)
+			})
+			
+			.done(function(res){
+				$("#respuesta_ajax").html(res);
+			});
+			
+		}else{
+			
+			swal("Error", "Por favor, primero seleccione una talla y color", "error");
+			
+		}
+		
+
+		
+	}
+	//funcion agregar paquete al carrito
+	
+	//funcion agregar paquete al carrito
+	function agregar_uno_carrito(id,stock_id){
+		
+			
+			$.ajax({
+				type: 'POST',
+				dataType: "html",
+				url: 'https://iabi.com.mx/tienda/ajax/canasta/agregar',
+				data: ('id='+id+'&id_stock='+stock_id)
+			})
+			
+			.done(function(res){
+				$("#respuesta_ajax").html(res);
+			});
+
+		
+
+		
+	}
+	//funcion agregar paquete al carrito
+	
+	
+	//funcion agregar paquete al carrito
+	function quitar_un_producto(id){
+		
+		var cantidad = $("#producto_"+id).val();
+			if(cantidad>=1){
+				cantidad = parseInt(cantidad) - 1;
+				$("#producto_"+id).val(cantidad);
+				
+				$("#procesar_compra").prop("disabled",true);
+				$("#procesar_compra").attr('disabled','disabled');
+				$("#notifica_actualiza_carrito").show();
+				
+			}
+			
+		
+		$.ajax({
+			type: 'POST',
+			dataType: "html",
+			url: 'https://iabi.com.mx/tienda/ajax/canasta/quitar_uno',
+			data: ('id='+id)
+		})
+		
+		.done(function(res){
+			$("#respuesta_ajax").html(res);
+		});
+		
+	}
+	//funcion agregar paquete al carrito	
+	
+	
+	//desloguearse
+	function logout(){
+		
+		$.ajax({
+			type: 'POST',
+			dataType: "html",
+			url: 'https://iabi.com.mx/tienda/ajax/login/logout'
+		})
+		
+		.done(function(res){
+			$("#respuesta_ajax").html(res);
+		});
+		
+	}
+	//desloguearse
+	
+	//Genera orden de pago
+	function generar_orden(){
+		
+		$("#pagar").html('<img src="https://iabi.com.mx/tienda/img/cargando2.gif" id="centrojx">');
+		
+		$.ajax({
+			type: 'POST',
+			dataType: "html",
+			url: 'https://iabi.com.mx/tienda/ajax/canasta/genera_orden'
+		})
+		
+		.done(function(res){
+			$("#group_forma_pago").hide();
+			$("#mensaje_pagar").html("Ahora presione \"Pagar ahora\" para poder completar su compra");
+			$("#pagar").html(res);
+		});
+		
+	}
+	//genera orden de pago
+	
+	
+	//funcion eliminar producto del carrito
+	function quitar_producto_carrito(id){
+		swal({
+			title: "¿Realmente desea quitar el producto?",
+			text: "Si gusta lo puede volver a ingresar",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: '#DD6B55',
+			confirmButtonText: 'Si, quitar',
+			cancelButtonText: "No, cancelar",
+			closeOnConfirm: false,
+			closeOnCancel: false,
+			showLoaderOnConfirm: true
+		},
+		function(isConfirm) {
+			if (isConfirm) {
+				
+				$("#respuesta_ajax").html('<img src="https://iabi.com.mx/tienda/img/cargando2.gif" id="centrojx">');
+				
+				$.ajax({
+					type: 'POST',
+					dataType: "html",
+					url: 'https://iabi.com.mx/tienda/ajax/canasta/quitar',
+					data: ('id='+id)
+				})
+				
+				.done(function(res){
+					$("#respuesta_ajax").html(res);
+				});
+				
+			}else{
+				swal("CANCELADO", "Se ha cancelado la operación", "error");
+			}
+		});
+	}
+	//funcion eliminar producto del carrito
+	
+	
+	function borrar_imagen_producto(){
+		
+		swal({
+			title: "¿Realmente desea eliminar la imagen?",
+			text: "Al eliminarla podrá subir una nueva",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonColor: '#DD6B55',
+			confirmButtonText: 'Si, borrar',
+			cancelButtonText: "No, cancelar",
+			closeOnConfirm: false,
+			closeOnCancel: false
+		},
+		function(isConfirm) {
+			if (isConfirm) {
+				
+				$("#imagen_paquete").prop("disabled",false);
+				$("#imagen_paquete").prop("readonly",false);
+				$("#imagen").hide();
+				$("#borra_img").val('1');
+				jQuery(function(){swal("INFORMACIÓN", "Se eliminó la imagen, ahora puede subir una nueva", "success");});
+				
+			}else{
+				swal("CANCELADO", "Se ha cancelado la operación", "error");
+			}
+		});
+		
+	}
+	
+	function guarda_suscripcion(){
+		var correo_suscripcion = $("#correo_suscripcion").val();
+		if(correo_suscripcion!=''){
+			$.ajax({
+				type: 'POST',
+				dataType: "html",
+				url: 'https://iabi.com.mx/tienda/ajax/cuenta/suscripcion',
+				data: ('correo='+correo_suscripcion)
+			})
+			
+			.done(function(res){
+				$("#respuesta_ajax").html(res);
+				$("#correo_suscripcion").val('');
+			});
+		}else{
+			swal("Error", "Favor de ingresar un correo", "error");
+		}
+		
+	}
+	
+	function busca_producto(){
+		
+		loading();
+		var buscar_producto = $("#buscar_producto").val();
+
+			$.ajax({
+				type: 'POST',
+				dataType: "html",
+				url: 'https://iabi.com.mx/tienda/ajax/productos/buscar',
+				data: ('buscar='+buscar_producto)
+			})
+			
+			.done(function(res){
+				close_loading();
+				$("#search_producto").html(res);
+				
+			});
+
+		
+	}
+	
+	function buscar_categoria(id_categoria){
+		
+			loading();
+
+			$.ajax({
+				type: 'POST',
+				dataType: "html",
+				url: 'https://iabi.com.mx/tienda/ajax/productos/buscar_categoria',
+				data: ('categoria='+id_categoria)
+			})
+			
+			.done(function(res){
+				close_loading();
+				$("#search_producto").html(res);
+			});
+
+		
+	}
+	
+	function buscar_rangos(){
+		
+		loading();
+		
+		var rango_precio = $("#rango_precio").val();
+
+			$.ajax({
+				type: 'POST',
+				dataType: "html",
+				url: 'https://iabi.com.mx/tienda/ajax/productos/buscar_rangos',
+				data: ('buscar='+rango_precio)
+			})
+			
+			.done(function(res){
+				close_loading();
+				$("#search_producto").html(res);
+			});
+
+		
+	}
+	
+	function agregar_cupon_individual(id){
+		
+		
+		swal({
+		  title: "Agrega un cupón",
+		  text: "Por favor ingresa el cupon",
+		  type: "input",
+		  showCancelButton: true,
+		  closeOnConfirm: false,
+		  inputPlaceholder: "Aqui ingresa tu cupón"
+		}, function (inputValue) {
+		  if (inputValue === false) return false;
+		  if (inputValue === "") {
+			swal.showInputError("Por favor ingresa tu cupón");
+			return false
+		  }
+		  
+			$.ajax({
+				type: 'POST',
+				dataType: "html",
+				url: 'https://iabi.com.mx/tienda/ajax/canasta/agrega_cupon_individual',
+				data: ('id='+id+'&cupon='+inputValue)
+			})
+			
+			.done(function(res){
+				$("#respuesta_ajax").html(res);
+			});
+		  
+		  
+
+		});
+		
+		
+	}
+	
+	
+	//qagregar cupon general
+	function agregar_cupon_general(){
+		
+		
+		$.ajax({
+			type: 'POST',
+			dataType: "html",
+			url: 'https://iabi.com.mx/tienda/ajax/canasta/agrega_cupon_general',
+			data: ('cupon='+$("#cupon_general").val())
+		})
+		
+		.done(function(res){
+			$("#respuesta_ajax").html(res);
+		});
+		
+		
+	}			
+	
+	
+	//qagregar cupon general
+	function aplicar_envio(){
+		
+		
+		swal({
+		  title: "Cotizar envío",
+		  text: "Por favor ingresa el Código Postal",
+		  type: "input",
+		  showCancelButton: true,
+		  closeOnConfirm: false,
+		  inputPlaceholder: "Aqui ingresa tu Código Postal"
+		}, function (inputValue) {
+		  if (inputValue === false) return false;
+		  if (inputValue === "") {
+			swal.showInputError("Por favor ingresa tu Código Postal");
+			return false
+		  }
+		  
+			$.ajax({
+				type: 'POST',
+				dataType: "html",
+				url: 'https://iabi.com.mx/tienda/ajax/canasta/agrega_envio',
+				data: ('cp='+inputValue)
+			})
+			
+			.done(function(res){
+				$("#respuesta_ajax").html(res);
+			});
+		  
+		  
+
+		});
+		
+		
+	}		
+	
+	function aplicar_envia_ya(){
+		
+		
+		
+		swal({
+		  title: "Cotizar envío",
+		  text: "Por favor ingresa el Código Postal",
+		  type: "input",
+		  showCancelButton: true,
+		  closeOnConfirm: false,
+		  inputPlaceholder: "Aqui ingresa tu Código Postal"
+		}, function (inputValue) {
+		  if (inputValue === false) return false;
+		  if (inputValue === "") {
+			swal.showInputError("Por favor ingresa tu Código Postal");
+			return false
+		  }
+		  
+			$.ajax({
+				type: 'POST',
+				dataType: "html",
+				url: 'https://iabi.com.mx/tienda/ajax/canasta/buscar_envia_ya',
+				data: ('cp='+inputValue),
+				 beforeSend: function() {
+					loading()
+				}
+			})
+
+			
+			.done(function(res){
+				swal.close()
+				$("#input_precio_envia_ya").html(res);
+				$('#precio_envia_ya').modal('toggle');
+				
+			});
+		  
+		  
+
+		});
+		
+		
+	}
+	
+	
+	function agregar_costo_envia_ya(){
+		
+		var input_precio_envia_ya	= $("#input_precio_envia_ya option:selected").val();
+		
+		$.ajax({
+			type: 'POST',
+			dataType: "html",
+			url: 'https://iabi.com.mx/tienda/ajax/canasta/agrega_envio',
+			data: ('cp='+input_precio_envia_ya)
+		})
+		
+		.done(function(res){
+			$("#respuesta_ajax").html(res);
+		});
+		
+		
+	}	
+	
+	
+	
+	//qagregar forma de pago
+	function agrega_forma_pago(){
+		
+		var forma_pago_val = $("#forma_pago_val option:selected").val();
+		
+		if(forma_pago_val.length == 0 || /^\s+$/.test(forma_pago_val)){
+			
+			jQuery(function(){swal("ERROR", "Favor de ingresar su forma de pago para su Factura", "error");});
+			
+		}else{
+			$.ajax({
+				type: 'POST',
+				dataType: "html",
+				url: 'https://iabi.com.mx/tienda/ajax/canasta/agrega_forma_pago',
+				data: ('forma_pago='+forma_pago_val)
+			})
+			
+			.done(function(res){
+				
+				$("#boton_generar_orden").prop("disabled", false);
+				$("#quitar_forma_pago").removeAttr('disabled');
+				$("#agrega_forma_pago").attr('disabled','disabled');
+				$("#respuesta_ajax").html(res);
+				
+				
+			});
+		}
+		
+	}		
+	
+	
+	//qagregar forma de pago
+	function quitar_forma_pago(){
+		
+		$.ajax({
+			type: 'POST',
+			dataType: "html",
+			url: 'https://iabi.com.mx/tienda/ajax/canasta/quitar_forma_pago',
+			data: ('forma_pago=')
+		})
+		
+		.done(function(res){
+			
+			$("#agrega_forma_pago").prop("disabled", false);
+			$("#boton_generar_orden").attr('disabled','disabled');
+			$("#respuesta_ajax").html(res);
+			
+			
+		});
+		
+		
+	}	
+	
+	//quitar cupon individual
+	function quitar_cupon_individual(id){
+		
+		
+		$.ajax({
+			type: 'POST',
+			dataType: "html",
+			url: 'https://iabi.com.mx/tienda/ajax/canasta/quitar_cupon_individual',
+			data: ('id='+id)
+		})
+		
+		.done(function(res){
+			$("#respuesta_ajax").html(res);
+		});
+		
+		
+	}
+	
+	//funcion quitar cupon general
+	function quitar_cupon_general(){
+		
+		
+		$.ajax({
+			type: 'POST',
+			dataType: "html",
+			url: 'https://iabi.com.mx/tienda/ajax/canasta/quitar_cupon_general'
+		})
+		
+		.done(function(res){
+			$("#respuesta_ajax").html(res);
+		});
+		
+		
+	}
+	
+	
+	//funcion quitar codigo postal
+	function quitar_envio(){
+		
+		
+		$.ajax({
+			type: 'POST',
+			dataType: "html",
+			url: 'https://iabi.com.mx/tienda/ajax/canasta/quitar_cp'
+		})
+		
+		.done(function(res){
+			$("#respuesta_ajax").html(res);
+		});
+		
+		
+	}
+	
+	//ajax modal bootstrap logs carga
+	function cargar_info_logs(id){
+		
+		
+		$.ajax({
+			type: 'POST',
+			dataType: "html",
+			url: 'https://iabi.com.mx/tienda/ajax/muestra_logs/cupon',
+			data: ('id='+id)
+		})
+		
+		.done(function(res){
+			$("#detalles_log").html(res);
+		});
+		
+		
+		
+	}
+	
+	
+	
+	
+	//Inicia Funcion Login modal
+	$(function(){
+
+		$("#login").on("submit", function(e){
+			e.preventDefault();
+			
+			var formData = new FormData(document.getElementById("login"));
+			
+			$("#respuesta_ajax_modal").html('<img src="https://iabi.com.mx/tienda/img/cargando2.gif" width="50" height="50" id="centrojx">');
+			
+			$.ajax({
+				url: "https://iabi.com.mx/tienda/ajax/login",
+				type: "post",
+				dataType: "html",
+				data: formData,
+				cache: false,
+				contentType: false,
+				processData: false
+			})
+
+						
+			.done(function(res){
+				$("#respuesta_ajax_modal").html(res);
+			});
+		
+		
+		});
+		
+	});
+	//termina funcion login modal
+	
+	
+	
+	//Inicia Funcion Login carrito
+	$(function(){
+
+		$("#login_carrito").on("submit", function(e){
+			e.preventDefault();
+			
+			
+			if(valida_inicia_sesion()){
+				
+				var formData = new FormData(document.getElementById("login_carrito"));
+				
+				$("#respuesta_login").html('<img src="https://iabi.com.mx/tienda/img/cargando2.gif" id="centrojx">');
+				
+				$.ajax({
+					url: "https://iabi.com.mx/tienda/ajax/login",
+					type: "post",
+					dataType: "html",
+					data: formData,
+					cache: false,
+					contentType: false,
+					processData: false
+				})
+
+							
+				.done(function(res){
+					$("#respuesta_login").html(res);
+				});
+				
+			}
+
+		
+		
+		});
+		
+	});
+	//termina funcion login carrito
+	
+	//Inicia Funcion registro
+	$(function(){
+
+		$("#registro").on("submit", function(e){
+			e.preventDefault();
+			
+			if(valida_registro_user()){
+				
+				var formData = new FormData(document.getElementById("registro"));
+				
+				//$("#respuesta_ajax").html('<img src="https://iabi.com.mx/tienda/img/cargando2.gif" id="centrojx">');
+				
+					jQuery(function(){
+						swal({
+							title: "¡Gracias!",
+							text: "Espera unos momentos, se está creando tu cuenta",
+							imageUrl: "https://iabi.com.mx/tienda/img/gears.gif"
+						})
+					});
+				
+				$.ajax({
+					url: "https://iabi.com.mx/tienda/ajax/login/registro",
+					type: "post",
+					dataType: "html",
+					data: formData,
+					cache: false,
+					contentType: false,
+					processData: false
+				})
+
+							
+				.done(function(res){
+					$("#respuesta_ajax").html(res);
+				});
+				
+			}
+		
+		});
+		
+	});
+	//termina funcion registro
+	
+	//Inicia Funcion Nuevo paquete
+	$(function(){
+
+		$("#form_paquete").on("submit", function(e){
+			e.preventDefault();
+			
+			var formData = new FormData(document.getElementById("form_paquete"));
+			
+			$("#respuesta_ajax").html('<img src="https://iabi.com.mx/tienda/img/cargando2.gif" id="centrojx">');
+			
+			$.ajax({
+				url: "https://iabi.com.mx/tienda/ajax/paquetes/nuevo",
+				type: "post",
+				dataType: "html",
+				data: formData,
+				cache: false,
+				contentType: false,
+				processData: false
+			})
+
+			
+			.done(function(res){
+				$("#respuesta_ajax").html(res);
+			});
+		
+		
+		});
+		
+	});
+	//termina funcion Nuevo paquete
+		
+	//Inicia Funcion Nueva carga cupon layout
+	$(function(){
+
+		$("#form_carga_cupon").on("submit", function(e){
+			e.preventDefault();
+			
+			var formData = new FormData(document.getElementById("form_carga_cupon"));
+			
+			$("#respuesta_ajax").html('<img src="https://iabi.com.mx/tienda/img/cargando2.gif" id="centrojx">');
+			
+			$.ajax({
+				url: "https://iabi.com.mx/tienda/ajax/carga_layout/cupones",
+				type: "post",
+				dataType: "html",
+				data: formData,
+				cache: false,
+				contentType: false,
+				processData: false
+			})
+
+			
+			.done(function(res){
+				$("#respuesta_ajax").html(res);
+			});
+		
+		
+		});
+		
+	});
+	//termina Funcion Nueva carga cupon layout
+
+	//Inicia Funcion Nueva carga producto layout
+	$(function(){
+
+		$("#form_carga_producto").on("submit", function(e){
+			e.preventDefault();
+			
+			var formData = new FormData(document.getElementById("form_carga_producto"));
+			
+			$("#respuesta_ajax").html('<img src="https://iabi.com.mx/tienda/img/cargando2.gif" id="centrojx">');
+			
+			$.ajax({
+				url: "https://iabi.com.mx/tienda/ajax/carga_layout/productos",
+				type: "post",
+				dataType: "html",
+				data: formData,
+				cache: false,
+				contentType: false,
+				processData: false
+			})
+
+			
+			.done(function(res){
+				$("#respuesta_ajax").html(res);
+			});
+		
+		
+		});
+		
+	});
+	//termina Funcion Nueva carga producto layout
+	
+	
+	//Inicia Funcion Nuevo cupon
+	$(function(){
+		$("#form_cupon").on("submit", function(e){
+			e.preventDefault();
+			
+			var formData = new FormData(document.getElementById("form_cupon"));
+			
+			$("#respuesta_ajax").html('<img src="https://iabi.com.mx/tienda/img/cargando2.gif" id="centrojx">');
+			
+			$.ajax({
+				url: "https://iabi.com.mx/tienda/ajax/paquetes/nuevo_cupon",
+				type: "post",
+				dataType: "html",
+				data: formData,
+				cache: false,
+				contentType: false,
+				processData: false
+			})
+
+			
+			.done(function(res){
+				$("#respuesta_ajax").html(res);
+			});
+		
+		
+		});
+	});
+	//termina funcion Nuevo cupon
+	
+	
+	//Inicia Funcion edita paquete
+	$(function(){
+
+		$("#form_paquete_edita").on("submit", function(e){
+			e.preventDefault();
+			
+			var formData = new FormData(document.getElementById("form_paquete_edita"));
+			$("#respuesta_ajax").html('<img src="https://iabi.com.mx/tienda/img/cargando2.gif" id="centrojx">');
+			$.ajax({
+				url: "https://iabi.com.mx/tienda/ajax/paquetes/editar",
+				type: "post",
+				dataType: "html",
+				data: formData,
+				cache: false,
+				contentType: false,
+				processData: false
+			})
+
+			
+			.done(function(res){
+				$("#respuesta_ajax").html(res);
+			});
+		
+		
+		});
+		
+	});
+	//termina funcion edita paquete
+	
+	
+	//Inicia Funcion envio mensaje contacto
+	$(function(){
+
+		$("#form_contacto").on("submit", function(e){
+			e.preventDefault();
+			
+			if(valida_contacto()){
+				
+				loading_contacto();
+				
+				var formData = new FormData(document.getElementById("form_contacto"));
+				
+				$.ajax({
+					url: "https://iabi.com.mx/tienda/ajax/admin_ajax/envia_mensaje_contacto",
+					type: "post",
+					dataType: "html",
+					data: formData,
+					cache: false,
+					contentType: false,
+					processData: false
+				})
+
+				
+				.done(function(res){
+					$("#respuesta_ajax").html(res);
+				});
+			}
+			
+		
+		
+		});
+		
+	});
+	//termina funcion envio mensaje contacto
+	
+	
+	//Inicia Funcion Nuevo paquete
+	$(function(){
+
+		$("#form_sube_pago").on("submit", function(e){
+			e.preventDefault();
+			
+			var formData = new FormData(document.getElementById("form_sube_pago"));
+			loading("Se está cargado su comrpobante");
+			
+			$.ajax({
+				url: "https://iabi.com.mx/tienda/ajax/cuenta/carga_pago",
+				type: "post",
+				dataType: "html",
+				data: formData,
+				cache: false,
+				contentType: false,
+				processData: false
+			})
+
+			
+			.done(function(res){
+				$("#respuesta_ajax").html(res);
+			});
+		
+		
+		});
+		
+	});
+	//termina funcion Nuevo paquete
+	
+	function muestra_form_sube_pago(id){
+		$("#id_compra").val(id);
+		$("#id_compra_texto").html(id);
+		$('#modal_pago').modal('show');
+		
+	}
+
+
+	
+	
+	$(document).ready(function(){
+	
+		//Inicia crear nuevo paquete
+		$("#group_cupon_descuento").hide();
+		$("#group_porcentaje_descuento").hide();
+		$("#group_tipo_descuento").hide();
+		$("#group_valido_desde").hide();
+		$("#group_valido_hasta").hide();
+		
+			$("#usar_cupon").change(function(){
+								
+				var usar_cupon = $("#usar_cupon option:selected").val();
+				
+				if(usar_cupon=='1'){
+					$('#group_cupon_descuento').fadeIn('slow');
+					$('#group_porcentaje_descuento').fadeIn('slow');
+					$('#group_tipo_descuento').fadeIn('slow');
+					$('#group_valido_desde').fadeIn('slow');
+					$('#group_valido_hasta').fadeIn('slow');
+				}else{
+					$('#group_cupon_descuento').fadeOut('slow');
+					$('#group_porcentaje_descuento').fadeOut('slow');
+					$('#group_tipo_descuento').fadeOut('slow');
+					$('#group_valido_desde').fadeOut('slow');
+					$('#group_valido_hasta').fadeOut('slow');
+				}
+				
+			});
+		
+		//Termina crear nuevo paquete
+		
+		//preloader
+		$(".preload").click(function(){
+			$("#status").fadeIn();
+			$("#preloader").fadeIn();
+		});
+		//preloader
+		
+		
+		$('.btnNext').click(function(){
+			$('.nav-tabs > .active').next('li').find('a').trigger('click');
+		});
+
+		$('.btnPrevious').click(function(){
+			$('.nav-tabs > .active').prev('li').find('a').trigger('click');
+		});
+
+	
+	});
+	
+
+	$(window).on('load', function() {				
+	
+	
+				
+		
+		//out preload
+		$('#status').fadeOut();
+		$('#preloader').delay(350).fadeOut('slow');
+		$('body').delay(350).css({'overflow':'visible'});
+		//out preload
+		
+	});
+	
+	
+
+
+	
+	</script>
+	
+</head>
+
+<body>
+	<!-- Preloader -->
+	<div id="preloader">
+		<div id="status">&nbsp;</div>
+	</div>
+	<!-- /preloader -->
+
+
+        <header>
+
+            <!-- *** TOP *** -->
+            <div id="top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-5 contact">
+                            <p class="hidden-sm hidden-xs">Contactanos al 56 2438 4000 ó  <a href="mailto:certificados@iluminacion.edu">certificados@iluminacion.edu</a></p>
+                            <p class="hidden-md hidden-lg"><a href="#" data-animate-hover="pulse"><i class="fa fa-phone"></i></a>  <a href="#" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+                            </p>
+                        </div>
+                        <div class="col-xs-7">
+                            <div class="social">
+                                <a href="#" target="_blank" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+                                <a href="#" target="_blank" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
+                                <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-youtube"></i></a>
+                                <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+                            </div>
+							
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- *** TOP END *** -->
+
+            <!-- *** NAVBAR *** -->
+
+            <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+                <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+                    <div class="container">
+                        <div class="navbar-header">
+
+                            <a class="navbar-brand home" href="index.html">
+                                <img src="../img/iabi_logo.png" width="80" height="57" alt="Fens" class="hidden-xs hidden-sm">
+                            </a>
+                            <div class="navbar-buttons">
+                                <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                                    <span class="sr-only">Navegación</span>
+                                    <i class="fa fa-align-justify"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!--/.navbar-header -->
+
+                       
+                        <div class="navbar-collapse collapse" id="navigation">
+
+                            <ul class="nav navbar-nav navbar-left">
+                                <li class="dropdown ">
+                                    <a href="index.html" class="preload">Inicio <i class="fa fa-home"></i></a>
+                                </li>
+                                <li class="dropdown active">
+                                    <a href="about.html" class="dropdown-toggle preload">Quienes Somos <i class="fa fa-building"></i></a>
+                                </li>
+                                <li class="dropdown ">
+                                    <a tabindex="-1" href="#" class="dropdown-toggle" data-toggle="dropdown">Servicios <b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li><a href="productos/categoria/8/consumibles-para-oxgeno.html" class="preload">REGULARIZACION EN MATEMATICA</a></li>
+											<li><a href="productos/categoria/6/terapia-respiratoria.html" class="preload">REGULARIZACION EN FISICA </a></li>
+											<li><a href="productos/categoria/5/mascarillas.html" class="preload">ORIENTACION VOCACIONAL</a></li>
+											<li><a href="productos/categoria/3/ventilacin.html" class="preload">CONSULTA TUS CALIFICACIONES</a></li>
+											<li><a href="productos/categoria/2/oxgeno.html" class="preload">SERVICIO DE ATENCION</a></li>
+										</ul>
+                                </li>
+								<li class="dropdown " style="text-decoration: none !important;">
+                                    <a href="faq.html" class="dropdown-toggle preload">FAQ <b class="fa fa-question-circle"></b></a>
+									
+                                </li>
+                                <li class="dropdown ">
+                                    <a href="tienda/contacto.html" class="preload">Contacto <b class="fa fa-envelope"></b></a>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <!--/.nav-collapse -->
+
+                    </div>
+
+
+                </div>
+                <!-- /#navbar -->
+
+            </div>
+
+            <!-- *** NAVBAR END *** -->
+
+        </header>
+
+      
+
+	
+					<span id="to_scroll"></span> 					
+        <section class="bar background-white">
+            <div class="container">
+					 <div id="content">
+            <div class="container">
+
+				<section>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="heading">
+                                <h2>Instituto de la  Iluminacion</h2>
+                            </div>
+
+                            <p class="lead" align="justify">                            
+                                El Instituto de la  Iluminacion establece el compromiso de implementar todos sus procesos, 
+                                orientándolos hacia la satisfacción de sus clientes sustentada en la Calidad del Proceso Educativo, 
+                                para cumplir con sus requerimientos, mediante la eficacia de un Sistema de Gestión de la Calidad y de mejora continua,
+                                 conforme a la norma ISO 9001:2008/NMX-CC-9001-IMNC2008..</p>
+							
+							
+
+                                                <center><h3>MISION</h3></center>
+
+
+
+                                                <p class="lead" align="justify">MISIÓN 
+
+                                                    Contribuir a la formación integral de profesionistas e
+                                                     investigadores líderes en la innovación y el desarrollo tecnológico de la región, del país y
+                                                      del mundo; con alto sentido de responsabilidad social, a través de un servicio educativo
+                                                       de calidad, con equidad y pertinencia.</p><br/>
+                                                
+                                                <center><h3>VISION</h3></center>
+
+                                                <p class="lead" align="justify">VISIÓN 
+
+                                                    Ser una institución rectora de la educación superior tecnológica, la investigación científica y el
+                                                     desarrollo tecnológico en la Región Noroeste del País, con proyección a nivel nacional e internacional.</p><br/>
+                                                
+                                                <center><h3>VALOR</h3></center>
+
+                                                <p class="lead" align="justify">
+                                                    VALORES
+                                                    
+                                                        Pertenencia.- Orgullo de formar parte de la Institución, plenamente identificado, convencido, y comprometido con la misión y la visión del tecnológico.
+                                                        – Cumplir con las funciones y tareas, individual y grupal mente, con un sentido de compromiso y un enfoque centrado en la calidad.
+                                                        Integridad.- Autenticidad y congruencia entre nuestros valores y comportamiento.
+                                                        Profesionalismo.- Ser ético, respetuoso, competente y mantenerse actualizado constantemente.
+                                                        Innovación.- Fomentar la creación y desarrollo de proyectos que conduzcan al logro de la visión institucional.
+                                                        Compromiso Social.- Desempeñarse con espíritu de servicio y coadyuvar, a través de la educación tecnológica del medio ambiente.
+                                                        –  Mantener la calidad a través de los medios necesarios para lograr la mejora continua.
+                                                    
+                                                    Trabajar en la mejora continua de los procedimientos, procesos, actividades y manejo de recursos, con el propósito de proporcionar la máxima satisfacción.
+                                                    
+                                                    Una educación de calidad se sustenta en crear, innovar y buscar la manera más eficiente de realizar las labores diarias.
+                                                    
+                                                        – Ser totalmente sincero, recto y justo.
+                                                    
+                                                    Comportarse y expresarse  de manera honesta y transparente  hacia los demás anteponiendo siempre la verdad, creando un ambiente de confianza y progreso dentro de la comunidad tecnológica.
+                                                    
+                                                        –  Reconocer los derechos de las personas y abstenerse de ofenderlas o causarles daño.
+                                                    
+                                                    Reconocer, apreciar y valorar a mi persona, así como a los demás, respetando los límites de nuestras acciones buscando siempre que no perjudiquen o  perturben la tranquilidad de nuestro entorno.
+                                                    
+                                                        – Respetar las opiniones, ideas o actitudes de los demás, aunque no coincidan con las propias.
+                                                    
+                                                    Apreciar la diversidad de personalidades, culturas y las variantes físicas que existen entre los seres humanos, saber escuchar y aceptar a los demás, siendo esto fundamental para la convivencia pacífica, indispensable para vivir en armonía en la escuela, trabajo y comunidad.
+                                                    
+                                                        – Realizar acciones y actividades de manera sobresaliente y excediendo nuestras expectativas.
+                                                    
+                                                    Reconocer las cualidades sobresalientes y talentos únicos de nuestra comunidad tecnológica y apoyarlos en su desarrollo profesional, con el propósito de que su superación beneficie a nuestra sociedad. Establecer metas claras que definan los objetivos más importantes como Institución y buscar la superación personal así como la colectiva.
+                                                    
+                                                        – Influir en los demás, haciendo que trabajen con entusiasmo, en el logro de metas y objetivos.
+                                                    
+                                                    Ejercer y fomentar un liderazgo basado en un código de valores como ser humano íntegro en el ámbito familiar, social, laboral y académico, con disciplina, lealtad, integridad, convicción, tenacidad, congruencia, credibilidad, sinceridad, libertad y respeto.
+                                                    
+                                                        – Alcanzar lo propuesto y buscar soluciones a las dificultades que puedan surgir.
+                                                    
+                                                    Ser constante en el logro de sus objetivos y metas, enfrentando los retos y superando las dificultades con valor, sin dejarse vencer, adaptándose a las circunstancias, para alcanzar el éxito.
+                                                    
+                                                        Trabajo en Equipo.-  Trabajar juntos hacia una visión común.
+                                                    
+                                                    Fomentar la creatividad, la motivación y el liderazgo colectivo, integrando esfuerzos para lograr objetivos y metas comunes; compartiendo los valores y principios éticos que nos definen como institución.
+                                                    
+                                                        Dedicación.- Ser firme en alcanzar un objetivo.
+                                                    
+                                                    Actuar con firmeza y pasión, dedicando tiempo y esfuerzo necesarios para realizar las actividades pertinentes para alcanzar los objetivos y metas planteadas para el beneficio individual y colectivo.
+                                                    
+                                                        –  Brindar ayuda incondicional a aquellos que lo necesiten.
+                                                    
+                                                    Estar atentos de las necesidades de la comunidad, dando lo mejor de sí mismo comprometidos y de manera desinteresada, uniendo esfuerzos para conseguir metas comunes, creando redes de apoyo flexibles y eficientes, que impacten positivamente en el desarrollo de  la sociedad.
+                                                    
+                                                        Igualdad de género.-  Igualdad de oportunidades de desarrollo para hombres y mujeres.
+                                                    
+                                                    Fomentar la defensa de la igualdad de oportunidades para hombres y mujeres de acuerdo con sus propias condiciones, necesidades  y características específicas, que garantizan el respeto a la pluralidad y al  derecho de acceder con justicia e igualdad al uso, control y beneficio de los mismos bienes y servicios de la sociedad.
+                                                     
+                                                    
+                                                    POLÍTICA DE  LA  CALIDAD
+                                                    
+                                                    El Instituto de la  Iluminacion establece el compromiso de implementar todos sus procesos, orientándolos hacia la satisfacción de sus clientes sustentada en la Calidad del Proceso Educativo, para cumplir con sus requerimientos, mediante la eficacia de un Sistema de Gestión de la Calidad y de mejora continua, conforme a la norma ISO 9001:2008/NMX-CC-9001-IMNC2008.
+                                                    
+                                                    .</p><br/>
+
+
+                                                    <center><h3>VENTAJAS COMPETITIVAS</h3></center><br/>
+							
+							<p class="lead" align="justify"> Nuestros documentos tienen validez oficial en toda la republica mexicana
+                                 y en el sistema educativo .<br><br>
+
+				            <b>Entrega sin costo adicional.</b> Para entregas programadas (DOCUMENTO) ubicadas dentro de 
+                            la Ciudad de México y área Metropolitana la entrega no tiene ningún cargo adicional.<br><br>
+
+				                                <b>Entregas en un lapzo de 30 dias.</b><br></p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+            <!-- /.container -->
+            </div>
+        </section>
+
+
+
+	     
+
+        <footer id="footer">
+            <div class="container">
+               
+
+               
+                <div class="col-md-4">
+
+                    <h4>Contacto</h4>
+
+                    <p><strong>Instituto de la  Iluminacion S.A. de C.V.</strong>
+					
+                        <br>calle siempre viva 15
+                        <br>Del. SPRINGFIELD	
+                        <br>Ciudad de Narnia. C.P. 11000
+                        <br>
+                    </p>
+
+                    <a href="contacto.html" class="btn btn-small btn-template-main">Contacto</a>
+
+                    <hr class="hidden-md hidden-lg hidden-sm">
+
+                </div>
+            </div>
+        </footer>
+   </div>
+
+	<div id="respuesta_ajax"></div>
+   <script>
+        window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')
+    </script>
+    <script src="../../maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/jquery.parallax-1.1.3.js"></script>
+    <script src="js/front.js"></script>
+    <!-- owl carousel -->
+    <script src="js/owl.carousel.min.js"></script>
+</body>
+</html>

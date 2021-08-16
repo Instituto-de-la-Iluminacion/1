@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Instituto de la  Iluminacion</title>
+
+    <meta name="keywords" content="">
+
+    <link href='../../fonts.googleapis.com/css6beb.css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../../maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<script src="../../ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.red.css" rel="stylesheet" id="theme-stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/owl.theme.css" rel="stylesheet">
+	<link href="css/ion.rangeSlider.css" rel="stylesheet">
+    <link href="css/ion.rangeSlider.skinNice.css" rel="stylesheet">
+	<script src="js/ion.rangeSlider.min.js"></script>
+	<link href="css/normalize.css" rel="stylesheet">
+	<style>
+	
+	.count{
+		background: #dc3545!important;
+		border-radius: 50%;
+		color: #fff;
+		font-family: 'Open Sans';
+		font-size: 9px;
+		font-weight: 700;
+		float: right;
+		height: 20px;
+		width: 20px;
+		line-height: 20px;
+		margin-right: 15px;
+		text-align: center; 
+	}
+	
+	
+	#centrojx {
+	   width: 250px;
+	   height: 229px;
+	   position: absolute;
+	   top: 50%;
+	   left: 50%;
+	   margin-top: -125px;
+	   margin-left: -125px;
+	}
+
+	.dropdown-submenu {
+		position: relative;
+	}
+
+	.dropdown-submenu .dropdown-menu {
+		top: 0;
+		left: 100%;
+		margin-top: -1px;
+	}
+	
+	body {
+		overflow: hidden;
+	}
+
+	#preloader {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #fff;
+		/* change if the mask should have another color then white */
+		z-index: 9999; /* makes sure it stays on top */
+	}
+
+	#status {
+		width: 200px;
+		height: 200px;
+		position: absolute;
+		left: 50%;
+		/* centers the loading animation horizontally one the screen */
+		top: 50%; /* centers the loading animation vertically one the screen */
+		background-image: url(img/gears.gif);
+		/* path to your loading animation */
+		background-repeat: no-repeat;
+		background-position: center;
+		margin: -100px 0 0 -100px; /* is width and height divided by two */
+	}
+	
+	
+</style>
+	
+	<script>
+	
+	
+	function validateEmail(email) {
+		var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+		return emailReg.test(email);
+	}
+	
+	function valida_contacto(){
+		
+		var nombres	= $("#nombres").val();
+		var apellidos	= $("#apellidos").val();
+		var email	= $("#email").val();
+		var telefono	= $("#telefono").val();
+		var asunto	= $("#asunto").val();
+		var mensaje	= $("#mensaje").val();
+		
+		var errores = 0;
+		var nom_error = "";
+		
+		if(nombres.length == 0 || /^\s+$/.test(nombres)){
+			 $("#nombres_group").addClass("has-error");
+			 errores = errores +1;
+			 nom_error+="Nombres, ";
+		}else{
+			$("#nombres_group").removeClass("has-error");
+		}
+		
+		if(apellidos.length == 0 || /^\s+$/.test(apellidos)){
+			 $("#apellidos_group").addClass("has-error");
+			 errores = errores +1;
+			 nom_error+="Apellidos, ";
+		}else{
+			$("#apellidos_group").removeClass("has-error");
+		}
+		
+		if(email.length == 0 || /^\s+$/.test(email)){
+			 $("#email_group").addClass("has-error");
+			 errores = errores +1;
+			 nom_error+="Correo, ";
+		}else{
+			
+			if(!validateEmail(email)){
+				 $("#email_group").addClass("has-error");
+				 errores = errores +1;
+				 nom_error+="Correo, ";
+			}else{
+				$("#email_group").removeClass("has-error");
+			}
+			
+		}
+		
+		if(telefono.length == 0 || /^\s+$/.test(telefono)){
+			 $("#telefono_group").addClass("has-error");
+			 errores = errores +1;
+			 nom_error+="Telefono, ";
+		}else{
+			
+			var valid = '[0-9]{10,15}';
+			var nuevo_valida=new RegExp(valid);
+			var matchArray=telefono.match(nuevo_valida);
+			
+			if (matchArray==null) {
+				$("#telefono_group").addClass("has-error");
+				errores = errores +1;
+				nom_error+="Telefono, ";
+			}else{
+				$("#telefono_group").removeClass("has-error");
+			}
+			
+		}
+		
+		if(asunto.length == 0 || /^\s+$/.test(asunto)){
+			 $("#asunto_group").addClass("has-error");
+			 errores = errores +1;
+			 nom_error+="Asunto, ";
+		}else{
+			$("#asunto_group").removeClass("has-error");
+		}
+		
+		if(mensaje.length == 0 || /^\s+$/.test(mensaje)){
+			 $("#mensaje_group").addClass("has-error");
+			 errores = errores +1;
+			 nom_error+="Mensaje, ";
+		}else{
+			$("#mensaje_group").removeClass("has-error");
+		}
+		
+		if(errores>0){
+			nom_error2 = nom_error.substring(0,nom_error.length-2);
+			jQuery(function(){swal("ERROR", "Tiene "+ errores +" errores. Favor de revisar los siguientes Campos: " + nom_error2, "error");});
+			return false;
+		}else{
+			return true;
+		}
+		
+	}
+	
+	//validacion contacto
+	
+	function validate_nombres(){
+		
+		var nombres	= $("#nombres").val();
+		
+		if(nombres.length == 0 || /^\s+$/.test(nombres)){
+			$("#nombres_help").show();
+			$("#group_nombres").addClass("has-error");
+		}else{
+			$("#group_nombres").removeClass("has-error");
+			$("#nombres_help").hide();
+		}
+		
+	}
+	
+	function validate_apellido_p(){
+		
+		var apellido_p	= $("#apellido_p").val();
+		
+		if(apellido_p.length == 0 || /^\s+$/.test(apellido_p)){
+			$("#apellido_p_help").show();
+			$("#group_apellido_p").addClass("has-error");
+		}else{
+			$("#apellido_p_help").hide();
+			$("#group_apellido_p").removeClass("has-error");
+		}
+		
+	}	
+	
+	
+	function validate_apellido_m(){
+		
+		var apellido_m	= $("#apellido_m").val();
+		
+		if(apellido_m.length == 0 || /^\s+$/.test(apellido_m)){
+			$("#apellido_m_help").show();
+			$("#group_apellido_m").addClass("has-error");
+		}else{
+			$("#apellido_m_help").hide();
+			$("#group_apellido_m").removeClass("has-error");
+		}
+		
+	}
+	
+	function validate_direccion(){
+		
+		var direccion	= $("#direccion").val();
+		
+		if(direccion.length == 0 || /^\s+$/.test(direccion)){
+			$("#direccion_help").show();
+			$("#group_direccion").addClass("has-error");
+		}else{
+			$("#group_direccion").removeClass("has-error");
+			$("#direccion_help").hide();
+		}
+		
+	}
+	
+	function validate_telefono(){
+		
+		var telefono	= $("#telefono").val();
+		
+		if(telefono.length == 0 || /^\s+$/.test(telefono)){
+			$("#group_telefono").addClass("has-error");
+			$("#telefono_help").show();
+		}else{
+			
+			var valid = '[0-9]{10}';
+			var nuevo_valida=new RegExp(valid);
+			var matchArray=telefono.match(nuevo_valida);
+			
+			if (matchArray==null) {
+				$("#group_telefono").addClass("has-error");
+				$("#telefono_help").show();
+			}else{
+				$("#group_telefono").removeClass("has-error");
+				$("#telefono_help").hide();
+			}
+		}
+		
+	}
+	
+	function validate_correo(){
+		
+		var correo	= $("#correo").val();
+		
+		if(correo.length == 0 || /^\s+$/.test(correo)){
+			$("#group_correo").addClass("has-error");
+			$("#correo_help").show();
+		}else{
+			
+			var emailRegex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+			
+			if(!emailRegex.test(correo)){
+				$("#group_correo").addClass("has-error");
+				$("#correo_help").show();
+			}else{
+				$("#group_correo").removeClass("has-error");
+				$("#correo_help").hide();
+			}
+			
+		}
+		
+	}
+	
+	/* Termina validaciones individuales*/
+
+	
+	//Inicia Funcion envio mensaje contacto
+	$(function(){
+
+		$("#form_contacto").on("submit", function(e){
+			e.preventDefault();
+			
+			if(valida_contacto()){
+				
+				loading_contacto();
+				
+				var formData = new FormData(document.getElementById("form_contacto"));
+				
+				$.ajax({
+					url: "https://iabi.com.mx/tienda/ajax/admin_ajax/envia_mensaje_contacto",
+					type: "post",
+					dataType: "html",
+					data: formData,
+					cache: false,
+					contentType: false,
+					processData: false
+				})
+
+				
+				.done(function(res){
+					$("#respuesta_ajax").html(res);
+				});
+			}
+			
+		
+		
+		});
+		
+	});
+	//termina funcion envio mensaje contacto
+	
+		
+	
+		
+
+	$(window).on('load', function() {				
+	
+	
+						//scroll to_body
+				$('html, body').animate({
+					scrollTop: $('#to_scroll').offset().top
+				}, 'slow');
+				//scroll to body
+				
+		
+		//out preload
+		$('#status').fadeOut();
+		$('#preloader').delay(350).fadeOut('slow');
+		$('body').delay(350).css({'overflow':'visible'});
+		//out preload
+
+	});
+	</script>
+	
+</head>
+
+<body>
+	<!-- Preloader -->
+	<div id="preloader">
+		<div id="status">&nbsp;</div>
+	</div>
+	<!-- /preloader -->
+
+        <header>
+
+            <!-- *** TOP *** -->
+            <div id="top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-5 contact">
+                            <p class="hidden-sm hidden-xs">Contactanos al 56 2438 4000 ó  <a href="mailto:certificados@iluminacion.edu">certificados@iluminacion.edu</a></p>
+                            <p class="hidden-md hidden-lg"><a href="#" data-animate-hover="pulse"><i class="fa fa-phone"></i></a>  <a href="#" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+                            </p>
+                        </div>
+                        <div class="col-xs-7">
+                            <div class="social">
+                                <a href="#" target="_blank" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+                                <a href="#" target="_blank" class="external gplus" data-animate-hover="pulse"><i class="fa fa-google-plus"></i></a>
+                                <a href="#" class="external gplus" data-animate-hover="pulse"><i class="fa fa-youtube"></i></a>
+                                <a href="#" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+                            </div>
+							
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- *** TOP END *** -->
+
+            <!-- *** NAVBAR *** -->
+
+            <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+                <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+                    <div class="container">
+                        <div class="navbar-header">
+
+                            <a class="navbar-brand home" href="index.html">
+                                <img src="../img/iabi_logo.png" width="80" height="57" alt="Fens" class="hidden-xs hidden-sm">
+                            </a>
+                            <div class="navbar-buttons">
+                                <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                                    <span class="sr-only">Navegación</span>
+                                    <i class="fa fa-align-justify"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!--/.navbar-header -->
+
+                        <div class="navbar-collapse collapse" id="navigation">
+
+                            <ul class="nav navbar-nav navbar-left">
+                                <li class="dropdown ">
+                                    <a href="index.html" class="preload">Inicio <i class="fa fa-home"></i></a>
+                                </li>
+                                <li class="dropdown active">
+                                    <a href="about.html" class="dropdown-toggle preload">Quienes Somos <i class="fa fa-building"></i></a>
+                                </li>
+                                <li class="dropdown ">
+                                    <a tabindex="-1" href="#" class="dropdown-toggle" data-toggle="dropdown">Servicios <b class="caret"></b></a>
+										<ul class="dropdown-menu">
+																							<li><a href="productos/categoria/8/consumibles-para-oxgeno.html" class="preload">REGULARIZACION EN MATEMATICA</a></li>
+																							<li><a href="productos/categoria/6/terapia-respiratoria.html" class="preload">REGULARIZACION EN FISICA </a></li>
+																							<li><a href="productos/categoria/5/mascarillas.html" class="preload">ORIENTACION VOCACIONAL</a></li>
+																							<li><a href="productos/categoria/3/ventilacin.html" class="preload">CONSULTA TUS CALIFICACIONES</a></li>
+																							<li><a href="productos/categoria/2/oxgeno.html" class="preload">SERVICIO DE ATENCION</a></li>
+																						
+										</ul>
+                                </li>
+								<li class="dropdown " style="text-decoration: none !important;">
+                                    <a href="faq.html" class="dropdown-toggle preload">FAQ <b class="fa fa-question-circle"></b></a>
+									
+                                </li>
+                                <li class="dropdown ">
+                                    <a href="tienda/contacto.html" class="preload">Contacto <b class="fa fa-envelope"></b></a>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <!--/.nav-collapse -->
+
+                    </div>
+
+
+                </div>
+                <!-- /#navbar -->
+
+            </div>
+
+            <!-- *** NAVBAR END *** -->
+
+        </header>
+					<span id="to_scroll"></span> 					
+        <section class="bar background-white">
+            <div class="container">
+					
+        <div id="content">
+            <div class="container" id="contact">
+
+                <div class="row">
+
+
+					<div class="col-md-3">
+
+                        <section>
+
+                            <h3 class="text-uppercase">Dirección</h3>
+							<p><strong>Instituto de la  Iluminacion S.A. de C.V.</strong>
+								<br>calle siempre viva 15
+								<br>Del. SPRINGFIELD	
+								<br>Ciudad de Narnia. C.P. 11000
+								<br>
+							</p>
+
+                            <h3 class="text-uppercase">Call center</h3>
+
+                            <p class="text-muted">Puedes contactarnos directo a nuestro Call Center, un ejecutivo de cuenta estará ahi para ayudarte.</p>
+                            <p><strong>+52 01 (55) 562438 4000</strong>
+                            </p>
+
+
+
+                            <h3 class="text-uppercase">Correo</h3>
+
+                            <p class="text-muted">Por favor, envienos sus dudas, preguntas y problemas al siguiente correo.</p>
+                            <ul>
+                                <li><strong><a href="mailto:ventas@iabi.com.mx">certificados@iluminacion.com.mx</a></strong></li>
+                            </ul>
+                        </section>
+                    </div>
+
+					
+                    <div class="col-md-8">
+
+                        <section>
+
+                            <div class="heading">
+                                <h2>Estamos aquí para ayudarte.</h2>
+                            </div>
+
+                            <p class="lead" align="justify">¿Tienes curiosidad por algo? ¿Tienes algúna duda o comentario?<br/><br/>
+								
+								Contáctanos por cualquiera de los siguientes medios para atenderte como tú te mereces.  <br>  <br>
+								
+								<strong>Horario de Servicio:<br/>
+								 Lunes a Viernes de 8:30 a 16:00 hrs. y Sábado de 8:30 a 12:00 hrs.<br>
+								</strong><br/><br>
+								
+								
+							</p>
+                            <p align="center">Por favor, siéntete libre de contactarnos, nuestro centro
+								 de servicio al cliente trabaja para usted.</p>
+
+                            <div class="heading">
+                                <h3>Formulario de contacto</h3>
+                            </div>
+
+                            <form name="form_contacto" id="form_contacto" role="form">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group" id="nombres_group">
+                                            <label for="nombres">Nombres</label>
+                                            <input type="text" class="form-control" name="nombres" id="nombres">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group" id="apellidos_group">
+                                            <label for="apellidos">Apellidos</label>
+                                            <input type="text" class="form-control" name="apellidos" id="apellidos">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group" id="email_group">
+                                            <label for="email">Correo</label>
+                                            <input type="email" class="form-control" name="email" id="email">
+                                        </div>
+                                    </div>
+									<div class="col-sm-6">
+                                        <div class="form-group" id="telefono_group">
+                                            <label for="telefono">Telefono</label>
+                                            <input type="telefono" class="form-control" name="telefono" id="telefono">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group" id="asunto_group">
+                                            <label for="asunto">Asunto</label>
+                                            <input type="text" class="form-control" name="asunto" id="asunto">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="form-group" id="mensaje_group">
+                                            <label for="mensaje">Mensaje</label>
+                                            <textarea class="form-control" name="mensaje" id="mensaje"></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12 text-center">
+                                        <button type="submit" class="btn btn-template-main"><i class="fa fa-envelope-o"></i> Enviar Mensaje</button>
+
+                                    </div>
+                                </div>
+                                <!-- /.row -->
+                            </form>
+
+                        </section>
+
+                    </div>
+
+                   
+                </div>
+
+            </div>
+        </div>
+        </section>
+		<footer id="footer">
+            <div class="container">
+               
+
+               
+                <div class="col-md-4">
+
+                    <h4>Contacto</h4>
+
+                    <p><strong>Instituto de la  Iluminacion S.A. de C.V.</strong>
+					
+                        <br>calle siempre viva 15
+                        <br>Del. SPRINGFIELD	
+                        <br>Ciudad de Narnia. C.P. 11000
+                        <br>
+                    </p>
+
+                    <a href="contacto.html" class="btn btn-small btn-template-main">Contacto</a>
+
+                    <hr class="hidden-md hidden-lg hidden-sm">
+
+                </div>
+            </div>
+        </footer>
+
+
+        <div id="copyright">
+            <div class="container">
+                <div class="col-md-12">
+                    <p class="pull-left">&copy; 2002.Instituto de la  Iluminacion S.A. de C.V.</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+	<div id="respuesta_ajax"></div>
+    <script>
+        window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')
+    </script>
+    <script src="../../maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/jquery.parallax-1.1.3.js"></script>
+    <script src="js/front.js"></script>
+    <!-- owl carousel -->
+    <script src="js/owl.carousel.min.js"></script>
+</body>
+</html>
