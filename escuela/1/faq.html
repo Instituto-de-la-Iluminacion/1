@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="es">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<head>
+    <meta charset="utf-8">
+    <meta name="robots" content="all,follow">
+    <meta name="googlebot" content="index,follow,snippet,archive">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Instituto de la  Iluminacion</title>
+
+    <meta name="keywords" content="">
+    <link href='../fonts.googleapis.com/css6beb.css?family=Roboto:400,100,100italic,300,300italic,500,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<script src="../ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.red.css" rel="stylesheet" id="theme-stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <link rel="shortcut icon" href="img/iabi_logo.png" type="image/x-icon" />	
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/owl.theme.css" rel="stylesheet">
+	<link href="css/ion.rangeSlider.css" rel="stylesheet">
+    <link href="css/ion.rangeSlider.skinNice.css" rel="stylesheet">
+	<script src="js/ion.rangeSlider.min.js"></script>
+	<link href="css/normalize.css" rel="stylesheet">
+	<style>
+	
+	.count{
+		background: #dc3545!important;
+		border-radius: 50%;
+		color: #fff;
+		font-family: 'Open Sans';
+		font-size: 9px;
+		font-weight: 700;
+		float: right;
+		height: 20px;
+		width: 20px;
+		line-height: 20px;
+		margin-right: 15px;
+		text-align: center; 
+	}
+	
+	
+	#centrojx {
+	   width: 250px;
+	   height: 229px;
+	   position: absolute;
+	   top: 50%;
+	   left: 50%;
+	   margin-top: -125px;
+	   margin-left: -125px;
+	}
+
+	.dropdown-submenu {
+		position: relative;
+	}
+
+	.dropdown-submenu .dropdown-menu {
+		top: 0;
+		left: 100%;
+		margin-top: -1px;
+	}
+	
+	body {
+		overflow: hidden;
+	}
+
+	#preloader {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #fff;
+		/* change if the mask should have another color then white */
+		z-index: 9999; /* makes sure it stays on top */
+	}
+
+	#status {
+		width: 200px;
+		height: 200px;
+		position: absolute;
+		left: 50%;
+		/* centers the loading animation horizontally one the screen */
+		top: 50%; /* centers the loading animation vertically one the screen */
+		background-image: url(img/gears.gif);
+		/* path to your loading animation */
+		background-repeat: no-repeat;
+		background-position: center;
+		margin: -100px 0 0 -100px; /* is width and height divided by two */
+	}
+	
+	
+</style>
+	
+	<script>
+	$(document).ready(function(){	
+		//preloader
+		$(".preload").click(function(){
+			$("#status").fadeIn();
+			$("#preloader").fadeIn();
+		});
+		//preloader
+	});
+	
+
+	$(window).on('load', function() {				
+						//scroll to_body
+				$('html, body').animate({
+					scrollTop: $('#to_scroll').offset().top
+				}, 'slow');
+				//scroll to body
+		//out preload
+		$('#status').fadeOut();
+		$('#preloader').delay(350).fadeOut('slow');
+		$('body').delay(350).css({'overflow':'visible'});
+		//out preload
+	});
+	</script>
+	
+</head>
+
+<body>
+
+
+    <div id="all">
+
+
+        <header>
+
+            <!-- *** TOP *** -->
+			<div id="top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-5 contact">
+                            <p class="">Contactanos al 56 2438 4000 ó 55 5833 1821 </div>        
+                        <div class="col-xs-7">
+                            <div class="social">
+                                <a href="tel:+525558331821" target="_blank" class="external facebook" data-animate-hover="pulse"><i class="fa fa-facebook"></i></a>
+                                <a href="https://wa.me/message/RUZ53KKPJM3SC1" target="_blank" class="external gplus" data-animate-hover="pulse"><i class="fa fa-whatsapp"></i></a>
+                                <a href="mailto:certificados@iluminacion.edu" class="email" data-animate-hover="pulse"><i class="fa fa-envelope"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- *** TOP END *** -->
+
+            <!-- *** NAVBAR *** -->
+			
+
+           <div class="navbar-affixed-top" data-spy="affix" data-offset-top="200">
+
+                <div class="navbar navbar-default yamm" role="navigation" id="navbar">
+
+                    <div class="container">
+                        <div class="navbar-header">
+
+                            <a class="navbar-brand home" href="index.html">
+                                <img src="img/iabi_logo.png" width="80" height="57" alt="Fens" class="hidden-xs hidden-sm">
+                            </a>
+                            <div class="navbar-buttons">
+                                <button type="button" class="navbar-toggle btn-template-main" data-toggle="collapse" data-target="#navigation">
+                                    <span class="sr-only">Navegación</span>
+                                    <i class="fa fa-align-justify"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <!--/.navbar-header --> 
+
+                        <div class="navbar-collapse collapse" id="navigation">
+
+                            <ul class="nav navbar-nav navbar-left">
+                                <li class="dropdown ">
+                                    <a href="index.html" class="preload">Inicio <i class="fa fa-home"></i></a>
+                                </li>
+                                <li class="dropdown ">
+                                    <a href="about.html" class="dropdown-toggle preload">Quienes Somos <i class="fa fa-building"></i></a>
+                                </li>
+                                <li class="dropdown ">
+                                    <a tabindex="-1" href="#" class="dropdown-toggle" data-toggle="dropdown">Servicios <b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li><a href="" class="preload">REGULARIZACION EN MATEMATICA</a></li>
+                                            <li><a href="" class="preload">REGULARIZACION EN FISICA </a></li>
+                                            <li><a href="" class="preload">ORIENTACION VOCACIONAL</a></li>
+                                            <li><a href="" class="preload">CONSULTA TUS CALIFICACIONES</a></li>
+                                            <li><a href="" class="preload">SERVICIO DE ATENCION</a></li>
+										</ul>
+                                </li>
+								<li class="dropdown active" style="text-decoration: none !important;">
+                                    <a href="faq.html" class="dropdown-toggle preload">FAQ <b class="fa fa-question-circle"></b></a>
+									
+                                </li>
+                                <li class="dropdown ">
+                                    <a href="1/contacto.html" class="preload">Contacto <b class="fa fa-envelope"></b></a>
+                                </li>
+                            </ul>
+
+                        </div>
+                        <!--/.nav-collapse -->
+
+                    </div>
+
+
+                </div>
+                <!-- /#navbar -->
+
+            </div>
+
+            <!-- *** NAVBAR END *** -->
+
+        </header>
+		
+				<span id="to_scroll"></span>				        <section class="bar background-white">
+            <div class="container">
+					
+<div id="content">
+	<div class="container">
+
+		<section>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="heading">
+						<h2>PREGUNTAS FRECUENTES</h2>
+					</div>
+
+									<div class="accordion" id="accordion2">
+				  <div class="accordion-group">
+					<div class="accordion-heading">
+					  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse1">
+						¿TIENEN ALGUN COSTO LOS SERVICIOS?
+					  </a>
+					</div>
+					<div id="collapse1" class="accordion-body collapse in">
+					  <div class="accordion-inner">
+						Si,el costo de la certificacion y costos totales es de $10,000
+					  </div>
+					</div>
+				  </div>
+				  <div class="accordion-group">
+					<div class="accordion-heading">
+					  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse2">
+						¿RECIBIMOS DONATIVOS?
+					  </a>
+					</div>
+					<div id="collapse2" class="accordion-body collapse">
+					  <div class="accordion-inner">
+						Si:<br/><br/>
+
+						
+
+						<b>1.	Vía depósito en ventanilla o mediante transferencia bancaria</b><br/><br/>
+
+						Ponemos a su disposición nuestros datos para depósito y/o transferencia bancaria:<br/><br/>
+
+							Banco: Banco Nacional de México (BANAMEX)<br/>
+							Beneficiario:Instituto de la  Iluminacion<br/>
+							No. Cuenta: 8616667775<br/>
+							Sucursal: 7002<br/>
+							CLABE: 666777666777666 (Banamex) <br/>
+
+					  </div>
+					</div>
+				  </div>
+				  
+				  <div class="accordion-group">
+					<div class="accordion-heading">
+					  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse3">
+						¿CUALES SON LAS FORMAS DE CONTACTO?
+					  </a>
+					</div>
+					<div id="collapse3" class="accordion-body collapse">
+					  <div class="accordion-inner">
+						LA MANERA DE CONTACTARNOS PUEDE SER PRESENCIALMENTE EN NUESTRAS INSTALACIONES ,POR MEDIO DEL CORREO ELECTRONICO O WHATSAPP
+					  </div>
+					</div>
+				  </div>
+				  
+				  <div class="accordion-group">
+					<div class="accordion-heading">
+					  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse4">
+						¿HAY ALGUN LUGAR FISICO PARA PRESENTARME?
+					  </a>
+					</div>
+					<div id="collapse4" class="accordion-body collapse">
+					  <div class="accordion-inner">
+						SI, NOS ENCONTRAMOS EN CALLE EMILIANO ZAPATA #8 , CAMPAMENTO 2 DE OCTUBRE ,CDMX C.P. 08930
+					  </div>
+					</div>
+				  </div>
+				  
+				  <div class="accordion-group">
+					<div class="accordion-heading">
+					  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse9">
+						¿MIS DATOS PERSONALES ESTÁN PROTEGIDOS?
+					  </a>
+					</div>
+					<div id="collapse9" class="accordion-body collapse">
+					  <div class="accordion-inner">
+						Efectivamente, su información personal, está protegida, de acuerdo con nuestro Aviso de Privacidad siguiente:<br><br>
+						
+						<div align="justify" style="background-color:#E6E6E6;"><center><b>AVISO DE PRIVACIDAD</b></center><br>
+						De acuerdo a lo Previsto en la “Ley Federal de Protección de Datos Personales”, declara <b>Instituto de la  Iluminacion </b>, ser una empresa legalmente constituida de conformidad con las leyes mexicanas, con domicilio en Calle Emiliano Zapata #8, Colonia Campamento 2 de Octubre, Delegación Iztacalco, C.P. 08930 en México, CDMX; y como responsable del tratamiento de sus datos personales, hace de su conocimiento que la información de nuestros clientes es tratada de forma estrictamente confidencial por lo que al proporcionar sus datos personales, <b>tales como: <br><br>
+						 
+						1.     Nombre Y/O Razón Social.<br>
+						2.     Dirección.<br>
+						3.     Registro Federal de Contribuyentes.<br>
+						4.     Teléfonos de Oficina y móviles<br>
+						5.     Correo Electrónico.</b><br><br>
+						 
+						Estos serán utilizados única y exclusivamente para los siguientes fines:  <br><br>
+						 
+						<b>1.     Campañas de Publicidad.<br>
+						2.     Información y Prestación de Servicios.<br>
+						3.     Actualización de la Base de Datos.<br>
+						4.     Cualquier finalidad análoga o compatible con las anteriores.</b><br><br>
+						 
+						Para prevenir el acceso no autorizado a sus datos personales y con el fin de  asegurar que la información sea utilizada para los fines establecidos en este aviso de privacidad, hemos establecido diversos procedimientos con la finalidad de evitar el uso o divulgación no autorizados de sus datos, permitiéndonos tratarlos debidamente.  Todos sus datos personales son tratados de acuerdo a la legislación aplicable y vigente en el país, por ello le informamos que usted tiene en todo momento los derechos <b>(ARCO)</b> de acceder, rectificar, cancelar u oponerse al tratamiento que le damos a sus datos personales; derecho que podrá hacer valer a través del <b>Área de Privacidad encargada de la seguridad de datos personales en el Teléfono 55-58-33-18-21.</b><br><br>
+						  
+						A través de este canal usted podrá actualizar sus datos y especificar el medio por el cual desea recibir información, ya que en caso de no contar con esta especificación de su parte, <b> Instituto de la  Iluminacion</b>, establecerá libremente el canal que considere pertinente para enviarle información.  Este aviso de privacidad podrá ser modificado por <b> Instituto de la  Iluminacion </b>, dichas modificaciones serán oportunamente informadas a través de correo electrónico, teléfono, página web o cualquier otro medio de comunicación que <b> Instituto de la  Iluminacion </b>, determine para tal efecto. <br><br>
+						</div> </div></div></div>
+		</section></div></div>
+            
+            </div>
+        </section>
+
+		<footer id="footer">
+            <div class="container">
+               
+
+               
+                <div class="col-md-4">
+                  <p><strong>Instituto de la  Iluminacion S.A. de C.V.</strong>
+					
+                        <br>CALLE EMILIANO ZAPATA #8
+                        <br>Del.IZTACALCO	
+                        <br>CDMX. C.P. 08930
+                        <br> 55-58-33-18-21
+                    </p>
+				 </div>
+            </div>
+        </footer>
+		<div id="copyright">
+            <div class="container">
+                <div class="col-md-12">
+                    <p class="pull-right">&copy; 2002.Instituto de la  Iluminacion S.A. de C.V.</p>
+                    </p>
+                </div>
+            </div>
+        </div>
+    <script>
+        window.jQuery || document.write('<script src="js/jquery-1.11.0.min.js"><\/script>')
+    </script>
+    <script src="../maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/jquery.parallax-1.1.3.js"></script>
+    <script src="js/front.js"></script>
+    <!-- owl carousel -->
+    <script src="js/owl.carousel.min.js"></script>
+</body>
+</html>
